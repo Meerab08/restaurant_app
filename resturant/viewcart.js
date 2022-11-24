@@ -36,8 +36,6 @@ const ViewCart = ({ navigation, route }) => {
               console.log("unit value", unit, value);
 
               if (value > 0) {
-                // console.log("ooooooooooooooooooooooooooooooooooooo");
-
                 return (
                   <View
                     style={{
@@ -47,20 +45,33 @@ const ViewCart = ({ navigation, route }) => {
                       backgroundColor: "red",
                     }}
                   >
-                    <TouchableOpacity>
-                      <Text style={{ fontSize: 16, color: "white" }}>
+                    <View
+                      style={{
+                        flex: 1,
+                        width: 290,
+                        flexDirection: "row",
+                        justifyContent: "center",
+                      }}
+                    >
+                      <Text style={{ fontSize: 16, color: "white", flex: 1 }}>
                         {key}
+                      </Text>
+                      <Text style={{ fontSize: 16, color: "white" }}>
                         {unit}
+                      </Text>
+                      <Text style={{ fontSize: 16, color: "white" }}> : </Text>
+                      <Text style={{ fontSize: 16, color: "white", flex: 1 }}>
                         {value}
                       </Text>
-                    </TouchableOpacity>
-                    <Quantity
-                      order={route.params.customer_order}
-                      key1={key}
-                      unit={unit}
-                      value={value}
-                      setOrder={setOrder}
-                    />
+
+                      <Quantity
+                        order={route.params.customer_order}
+                        key1={key}
+                        unit={unit}
+                        value={value}
+                        setOrder={setOrder}
+                      />
+                    </View>
                   </View>
                 );
               }
