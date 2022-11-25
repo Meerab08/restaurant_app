@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { Text, TextInput, Button, TouchableOpacity, View } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
+import { OrderContext } from "./ordercontext";
 
 const Quantity = (props) => {
-  const [quantity, setQuantity] = useState(1);
-  const { order } = props;
-  const { setOrder } = props;
+  const [quantity, setQuantity] = useState(0);
+  const { order, setOrder } = React.useContext(OrderContext);
+  console.log("setOrder", setOrder);
+  // const { order } = props;
+  // const { setOrder } = props;
   const { key1, unit, value } = props;
 
   function addQuantity() {
@@ -26,7 +29,7 @@ const Quantity = (props) => {
     order.map((m) => {
       console.log("add", m);
     });
-    setOrder(order);
+    setOrder([...order]);
     // =========================================
   }
   function removeQuantity() {
@@ -42,7 +45,7 @@ const Quantity = (props) => {
           }
         }
       });
-      setOrder(order);
+      setOrder([...order]);
     }
     // =========================================
     order.map((m) => {
@@ -67,7 +70,7 @@ const Quantity = (props) => {
 
       {/* <Button title="Down" onPress={removeQuantity} /> */}
       <TextInput
-        value={quantity.toString()}
+        value={value.toString()}
         editable={false}
         style={{
           backgroundColor: "#F4A6A6",

@@ -5,11 +5,11 @@ import FontAwesome from "react-native-vector-icons/FontAwesome";
 import SelectDropdown from "react-native-select-dropdown";
 import { View } from "react-native";
 import AddToCart from "./addtocart";
+import { OrderContext } from "./ordercontext";
 
 const Unit = (props) => {
   const { units } = props;
-  const { order } = props;
-  const { setOrder } = props;
+  const { order, setOrder } = React.useContext(OrderContext);
   const { key2 } = props;
 
   const [unitValue, setUnitValue] = useState({});
@@ -62,7 +62,7 @@ const Unit = (props) => {
       />
       <AddToCart
         unitValue1={unitValue}
-        order1={order}
+        // order1={order}
         setUnitValue1={setUnitValue}
       />
     </View>

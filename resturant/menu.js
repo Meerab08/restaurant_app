@@ -13,45 +13,15 @@ import {
 import * as Animatable from "react-native-animatable";
 import Accordion from "react-native-collapsible/Accordion";
 import Unit from "./unit";
-
-const CONTENT = [
-  {
-    title: "Appetizers",
-    items: {
-      "Spring Roll": { Half: 0, Full: 0 },
-      "Plain Fries": { Half: 0, Full: 0 },
-      "Mayo Fries": { Half: 0, Full: 0 },
-    },
-    units: { Half: 0, Full: 0 },
-  },
-  {
-    title: "Soup",
-    items: {
-      "Chicken Tortilla Soup": { Half: 0, Full: 0 },
-      "Old-Fashioned Beef Stew": { Half: 0, Full: 0 },
-      "Vegan Corn Chowder": { Half: 0, Full: 0 },
-    },
-    units: { Half: 0, Full: 0 },
-  },
-  {
-    title: "Pizzas",
-    items: {
-      "Frank Pepe Pizzeria": { Small: 0, Medium: 0, Large: 0 },
-      "Pizza Margherita": { Small: 0, Medium: 0, Large: 0 },
-      "Italian Sausage Pan Pizza": { Small: 0, Medium: 0, Large: 0 },
-    },
-    units: { Small: 0, Medium: 0, Large: 0 },
-  },
-];
+import { OrderContext } from "./ordercontext";
 
 // ***************************************************************
 // ***************************************************************
 
 const Menu = ({ navigation }) => {
+  const { CONTENT, order, setOrder } = React.useContext(OrderContext);
   // Ddefault active selector2
   const [activeCategory, setActiveCategory] = useState([]);
-  const [order, setOrder] = useState(CONTENT);
-  // const [order, setOrder] = useState(CONTENT);
 
   const setSections = (sections) => {
     //setting up a active section state
@@ -101,8 +71,8 @@ const Menu = ({ navigation }) => {
               {console.log(itemkey)}
               <Unit
                 units={content.units}
-                order={order}
-                setOrder={setOrder}
+                // order={order}
+                // setOrder={setOrder}
                 key2={itemkey}
               />
             </View>
@@ -154,14 +124,7 @@ const Menu = ({ navigation }) => {
             />
             {/* </ScrollView> */}
           </View>
-          <TouchableOpacity
-            onPress={() =>
-              navigation.navigate("Cart", {
-                customer_order: order,
-                customer_setOrder: setOrder,
-              })
-            }
-          >
+          <TouchableOpacity onPress={() => navigation.navigate("Cart")}>
             <Text
               style={{
                 backgroundColor: "black",
@@ -211,9 +174,6 @@ const styles = StyleSheet.create({
     marginLeft: "auto",
     padding: 20,
     backgroundColor: "#fff",
-
-    // justifyContent: "center",
-    // alignItems: "center",
   },
   active: {
     backgroundColor: "rgba(255,255,255,1)",

@@ -7,12 +7,17 @@ import {
   TouchableOpacity,
 } from "react-native";
 import Quantity from "./quantity";
+import { OrderContext } from "./ordercontext";
 
 const ViewCart = ({ navigation, route }) => {
   // console.log(route.params.customer_order);
-  const order = route.params.customer_order;
-  const setOrder = route.params.customer_setOrder;
-  console.log("setOrder", order);
+  const { order, setOrder } = React.useContext(OrderContext);
+
+  // const order = route.params.customer_order;
+  // const setOrder = route.params.customer_setOrder;
+  console.log(
+    "=============================================================================================="
+  );
   console.log("orderorderorder", JSON.stringify(order));
 
   return (
@@ -38,6 +43,7 @@ const ViewCart = ({ navigation, route }) => {
               if (value > 0) {
                 return (
                   <View
+                    key={index}
                     style={{
                       flexDirection: "row",
                       alignItems: "center",
@@ -56,16 +62,12 @@ const ViewCart = ({ navigation, route }) => {
                       <Text style={{ fontSize: 16, color: "white", flex: 1 }}>
                         {key}
                       </Text>
-                      <Text style={{ fontSize: 16, color: "white" }}>
-                        {unit}
-                      </Text>
-                      <Text style={{ fontSize: 16, color: "white" }}> : </Text>
                       <Text style={{ fontSize: 16, color: "white", flex: 1 }}>
-                        {value}
+                        {unit} : {value}
                       </Text>
 
                       <Quantity
-                        order={route.params.customer_order}
+                        order={order}
                         key1={key}
                         unit={unit}
                         value={value}
