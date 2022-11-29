@@ -8,21 +8,14 @@ import AddToCart from "./addtocart";
 import { OrderContext } from "./ordercontext";
 
 const Unit = (props) => {
-  const { units } = props;
-  const { order, setOrder } = React.useContext(OrderContext);
-  const { key2 } = props;
+  const { units, key2 } = props;
+  // const { order, setOrder } = React.useContext(OrderContext);
 
   const [unitValue, setUnitValue] = useState({});
   console.log(
     "*************************************************************************************************"
   );
 
-  // console.log(order);
-  // const a = order[0];
-  // console.log(a.items);
-  // const item = a.items;
-  // console.log(order[0].items["Mayo Fries"]["Half"]);
-  // console.log(item["Mayo Fries"]);
   const quantity = ["Half", "Full"];
 
   return (

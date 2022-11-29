@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Button,
   Text,
@@ -10,15 +10,7 @@ import Quantity from "./quantity";
 import { OrderContext } from "./ordercontext";
 
 const ViewCart = ({ navigation, route }) => {
-  // console.log(route.params.customer_order);
   const { order, setOrder } = React.useContext(OrderContext);
-
-  // const order = route.params.customer_order;
-  // const setOrder = route.params.customer_setOrder;
-  console.log(
-    "=============================================================================================="
-  );
-  console.log("orderorderorder", JSON.stringify(order));
 
   return (
     <View>
@@ -30,15 +22,18 @@ const ViewCart = ({ navigation, route }) => {
       <Text>This is view cart page!</Text>
       {order.length > 0 ? (
         order.map((i, index) => {
-          console.log(i);
+          console.log(
+            "=============================================================================================="
+          );
+          // console.log(i);
 
           return Object.keys(i.items).map((key) => {
-            console.log(key);
+            console.log("key : ", key);
 
             return Object.keys(i.items[key]).map((key2) => {
               const unit = key2;
               const value = i.items[key][key2];
-              console.log("unit value", unit, value);
+              console.log("unit/value : ", unit, value);
 
               if (value > 0) {
                 return (

@@ -8,6 +8,7 @@ const AddToCart = (props) => {
   const { order, setOrder } = React.useContext(OrderContext);
   // const { order1 } = props;
   const [add, setAdd] = useState();
+  const { show, setShow } = React.useContext(OrderContext);
 
   const addToCart = () => {
     console.log("cart", unitValue1);
@@ -20,6 +21,7 @@ const AddToCart = (props) => {
       // console.log(unitValue1.unit);
       const key2 = unitValue1.item;
       const selectedItem = unitValue1.unit;
+
       const index = order.map((i, ind) => {
         for (var food in i.items) {
           console.log("food: ", food);
@@ -29,16 +31,31 @@ const AddToCart = (props) => {
             order[ind].items[key2][selectedItem] =
               order[ind].items[key2][selectedItem] + 1;
             // console.log(order1[ind].items[key2][selectedItem]);
+
             setUnitValue1({});
+            setShow((prev) => [
+              ...prev,
+              {
+                item: food,
+                unit: selectedItem,
+                value: order[ind].items[key2][selectedItem],
+              },
+            ]);
+            // setShow({
+            //   ...show,
+            //   item: food,
+            //   unit: selectedItem,
+            //   value: order[ind].items[key2][selectedItem],
+            // });
             return { ...order[ind].items, ...order[ind].items[key2] };
-            break; //Stop this loop, we found it!
           }
         }
       });
       // .................................................
-      order.map((items) => {
-        console.log(items);
-      });
+      // order.map((items) => {
+      //   console.log(items);
+      // });
+      console.log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ ", show);
     }
   };
 
