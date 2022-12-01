@@ -35,7 +35,6 @@ const OrderContextProvider = (props) => {
   const [order, setOrder] = useState(CONTENT);
   const [show, setShow] = useState([]);
 
-  console.log("dcdcd");
   return (
     <OrderContext.Provider value={{ CONTENT, order, setOrder, show, setShow }}>
       {props.children}

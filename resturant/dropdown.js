@@ -6,17 +6,17 @@ import {
   TouchableOpacity,
   FlatList,
 } from "react-native";
-const { width } = Dimensions.get("window");
+import { View } from "react-native";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import SelectDropdown from "react-native-select-dropdown";
-import { View } from "react-native";
+
 import Quantity from "./quantity";
 
 const DropDown = ({ title, item1, item2, item3 }) => {
   const quantity = ["Half", "Full"];
   const [show, setShow] = useState(false);
   const display = () => {
-    console.log(`show: ${show}`);
+    // console.log(`show: ${show}`);
     setShow(!show);
   };
   return (
@@ -24,12 +24,10 @@ const DropDown = ({ title, item1, item2, item3 }) => {
       <SelectDropdown
         data={quantity}
         onSelect={(selectedItem, index) => {
-          console.log(selectedItem, index);
+          // console.log(selectedItem, index);
         }}
         defaultButtonText={"Half / Full"}
-        buttonTextAfterSelection={(selectedItem, index) => {
-          return selectedItem;
-        }}
+        buttonTextAfterSelection={(selectedItem, index) => selectedItem}
         rowTextForSelection={(item, index) => {
           return item;
         }}
@@ -69,12 +67,14 @@ const styles = StyleSheet.create({
     // borderRadius: 8,
     // fontSize: 10,
   },
+
   dropdown2BtnTxtStyle: {
     color: "#FFF",
     textAlign: "center",
     fontSize: 14,
     fontWeight: "bold",
   },
+
   dropdown2DropdownStyle: {
     backgroundColor: "red",
     borderRadius: 0,

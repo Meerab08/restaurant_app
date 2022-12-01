@@ -13,21 +13,21 @@ const Quantity = (props) => {
 
   function addQuantity() {
     setQuantity(quantity + 1);
-    console.log(`quantity: ${quantity}`);
+    // console.log(`quantity: ${quantity}`);
     // =========================================
     const indexx = order.map((i, ind) => {
       for (var key in i.items) {
         if (key === key1) {
-          console.log("k", i.items?.[key1][unit]);
+          // console.log("k", i.items?.[key1][unit]);
           order[ind].items[key1][unit] = order[ind].items[key1][unit] + 1;
-          console.log("u", order[ind].items[key1][unit]);
+          // console.log("u", order[ind].items[key1][unit]);
           // return { ...order[ind].items, ...order[ind].items[key2] };
         }
       }
     });
     // =========================================
     order.map((m) => {
-      console.log("add", m);
+      // console.log("add", m);
     });
     setOrder([...order]);
     // =========================================

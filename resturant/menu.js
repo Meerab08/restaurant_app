@@ -42,7 +42,7 @@ const Menu = ({ navigation }) => {
   };
 
   const foodItems = (content, index, isActive, sections) => {
-    console.log(content);
+    // console.log(content);
     // **********************************************************************
     //***********************  return of category object ************************* */
     return (
@@ -67,14 +67,7 @@ const Menu = ({ navigation }) => {
               >
                 {itemkey}
               </Animatable.Text>
-              {/* <Quantity order={order} setOrder={setOrder} key1={itemkey} /> */}
-              {console.log(itemkey)}
-              <Unit
-                units={content.units}
-                // order={order}
-                // setOrder={setOrder}
-                key2={itemkey}
-              />
+              <Unit units={content.units} key2={itemkey} />
             </View>
           ))}
         </Animatable.View>
