@@ -21,7 +21,6 @@ const MyStack = () => {
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen name="Menu" component={Menu} />
-
           <Stack.Screen name="Cart" component={ViewCart} />
         </Stack.Navigator>
       </NavigationContainer>

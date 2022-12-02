@@ -7,7 +7,6 @@ import {
   View,
   TouchableOpacity,
   Image,
-  Button,
 } from "react-native";
 
 import * as Animatable from "react-native-animatable";
@@ -54,20 +53,40 @@ const Menu = ({ navigation }) => {
         >
           {Object.keys(content.items).map((itemkey, index) => (
             <View
-              key={index}
               style={{
-                flexDirection: "row",
-                alignItems: "center",
-                marginBottom: 10,
+                flexDirection: "column",
+                // backgroundColor: "yellow",
               }}
             >
-              <Animatable.Text
-                animation={isActive ? "bounceIn" : undefined}
-                style={{ textAlign: "center", minWidth: 100, marginRight: 5 }}
+              <View
+                key={index}
+                style={
+                  {
+                    // flexDirection: "row",
+                    // alignItems: "center",
+                    // marginBottom: 10,
+                  }
+                }
               >
-                {itemkey}
-              </Animatable.Text>
-              <Unit units={content.units} key2={itemkey} />
+                <Animatable.Text
+                  animation={isActive ? "bounceIn" : undefined}
+                  style={{
+                    textAlign: "center",
+                    // minWidth: 100,
+                    // marginRight: 5,
+                    fontWeight: "bold",
+                    fontSize: 16,
+                    // flex: 1,
+                    width: 250,
+                  }}
+                >
+                  {itemkey}
+                </Animatable.Text>
+                {/* <Unit units={content.units} key2={itemkey} /> */}
+              </View>
+              <View>
+                <Unit units={content.units} key2={itemkey} />
+              </View>
             </View>
           ))}
         </Animatable.View>
@@ -162,11 +181,12 @@ const styles = StyleSheet.create({
     fontWeight: "500",
   },
   content: {
+    width: "100%",
     minWidth: "80%",
     marginRight: "auto",
     marginLeft: "auto",
     padding: 20,
-    backgroundColor: "#fff",
+    backgroundColor: "#FFFACD",
   },
   active: {
     backgroundColor: "rgba(255,255,255,1)",

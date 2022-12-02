@@ -1,10 +1,13 @@
 import React, { useState } from "react";
-import { Button, Text, View, TouchableOpacity } from "react-native";
+import { Text, View, TouchableOpacity } from "react-native";
+import WhatsApp from "../whatsapp";
 import { OrderContext } from "./ordercontext";
 
-const ViewCart = ({ navigation, route }) => {
+const ViewCart = ({ navigation }) => {
   const { show, setShow } = React.useContext(OrderContext);
   const [delivery, setDelivery] = useState({});
+  let Message = "";
+
   const map1 = () => {
     show.forEach(
       (d) =>
@@ -15,16 +18,7 @@ const ViewCart = ({ navigation, route }) => {
     );
   };
   map1();
-  // ********************************************************************************
-  // const mapObjectToArray = (object) =>
-  // Object.keys(delivery).map((data) => {
-  //   console.log("*********************************");
-  //   console.log(data);
-  //   for (var k in delivery[data]) {
-  //     console.log("k: ", k, delivery[data][k]);
-  //   }
-  // });
-  // const arr = mapObjectToArray(delivery);
+
   // ********************************************************************************
   console.log("delivery", delivery);
 
@@ -37,38 +31,38 @@ const ViewCart = ({ navigation, route }) => {
   // ********************************************************************************
   return (
     <View>
-      {/* {Object.keys(delivery).map((data) => {
-        console.log("*********************************");
-        console.log(data);
-        <Text>{data}</Text>;
-        for (var k in delivery[data]) {
-          console.log("k: ", k, delivery[data][k]);
-          <Text>
-            {k}: {delivery[data][k]}
-          </Text>;
-        }
-      })} */}
-      {/* __________________________________________________________________________ */}
-      {/* __________________________________________________________________________ */}
       {arr.map((obj, i) => {
         console.log("*******************************");
+
         return (
           <>
             {Object.keys(obj).map((k, i) => {
               console.log("obj", obj);
-              // <Text>{k}</Text>;
               console.log(k, obj[k]);
+              k == "item"
+                ? (Message += obj[k] + " " + "\n")
+                : (Message += k + ": " + obj[k] + "\n");
+              console.log("msg: ", Message);
               return (
                 <View>
-                  <Text>
-                    {k} : {obj[k]}
-                  </Text>
+                  {k == "item" ? (
+                    <View>
+                      <Text>{obj[k]}</Text>
+                    </View>
+                  ) : (
+                    <View>
+                      <Text>
+                        {k} : {obj[k]}
+                      </Text>
+                    </View>
+                  )}
                 </View>
               );
             })}
           </>
         );
       })}
+      <WhatsApp msg={Message} />
     </View>
   );
 };

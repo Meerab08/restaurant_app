@@ -47,11 +47,18 @@ const Unit = (props) => {
       <FlatList
         data={Object.keys(units)}
         renderItem={({ item }) => (
-          <View style={{ marginLeft: 20, flexDirection: "row" }}>
-            <Text style={{ flex: 1 }}>{item}</Text>
+          <View
+            style={{
+              paddingTop: 5,
+              width: "100%",
+              flexDirection: "row",
+              justifyContent: "space-around",
+            }}
+          >
+            <Text style={{ flex: 0, fontSize: 16 }}>{item}</Text>
             <TextInput
               onEndEditing={(text) => onChangeFun(key2, item, text)}
-              style={{ borderWidth: 1, width: 60 }}
+              style={{ borderWidth: 1, width: 60, height: 25 }}
             />
           </View>
         )}
